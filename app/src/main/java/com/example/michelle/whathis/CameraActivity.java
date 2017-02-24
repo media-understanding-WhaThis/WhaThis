@@ -46,7 +46,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.jar.Manifest;
 
-// 12, 16
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CameraActivity extends AppCompatActivity {
@@ -433,8 +432,10 @@ public class CameraActivity extends AppCompatActivity {
 
     private File createImageFileName() throws IOException {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        System.out.println(timestamp);
         String prepend = "IMAGE_" + timestamp + "_";
-        File imageFile = File.createTempFile(prepend, ".jpg", mImageFolder);
+        File imageFile = File.createTempFile(prepend, ".jpg");
+        System.out.println("Path: " + imageFile.getAbsolutePath());
         mImageFileName = imageFile.getAbsolutePath();
         return imageFile;
     }
